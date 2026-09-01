@@ -15,16 +15,16 @@ const ATLETAS = [
   { slug:'joao-pedro',      nome:'João Pedro',      posicao:'Atacante',         altura:'1,83 m', ano:'2008', clube:'Barra FC',              exClube:'Corinthians',      carta:'7.jpg' },
   { slug:'miguel-campos',   nome:'Miguel Campos',   posicao:'Zagueiro',         altura:'1,88 m', ano:'1996', carta:'8.jpg',
     perfil:'https://www.transfermarkt.com/miguel-campos/profil/spieler/335744', perfilNome:'Transfermarkt', perfilLogo:'transfermarkt.png' },
-  { slug:'cleyton',         nome:'Cleyton Matheus', posicao:'Lateral-esquerdo', altura:'1,82 m', ano:'2001', carta:'9.jpg', foto:'cleyton.jpeg' },
-  { slug:'fernando-fonseca',nome:'Fernando Fonseca',posicao:'Zagueiro',         altura:'1,90 m', ano:'1993', carta:'10.jpg',
+  { slug:'cleyton',         nome:'Cleyton Matheus', posicao:'Lateral-esquerdo', altura:'1,82 m', ano:'2001', carta:'9.jpg', foto:'cleyton.jpeg', videos:['I16kkt6Obxw','fVKzpzlxQoc'] },
+  { slug:'fernando-fonseca',nome:'Fernando Fonseca',posicao:'Zagueiro',         altura:'1,90 m', ano:'1993', carta:'10.jpg', videos:['KBJDx-eAoYY','CxlmRp3s7J8'],
     perfil:'https://www.ogol.com.br/jogador/fernando/379323?epoca_id=153', perfilNome:'oGol', perfilLogo:'ogol.png' },
-  { slug:'airon-santos',    nome:'Airon Santos',    posicao:'Goleiro',          altura:'1,90 m', ano:'1994', clube:'Al Ittihad SC',         exClube:'Carlos Renaux',    pais:'Emirados Árabes Unidos', carta:'11.jpg',
+  { slug:'airon-santos',    nome:'Airon Santos',    posicao:'Goleiro',          altura:'1,90 m', ano:'1994', clube:'Al Ittihad SC',         exClube:'Carlos Renaux',    escudoEx:'carlos-renaux.png', pais:'Emirados Árabes Unidos', carta:'11.jpg', videos:['85TbGc8F8n8','d4rBAmzLvLI'],
     perfil:'https://www.ogol.com.br/jogador/airon/292230', perfilNome:'oGol', perfilLogo:'ogol.png' },
-  { slug:'bruno-marcello',  nome:'Bruno Marcello',  posicao:'Zagueiro',         ano:'2012', clube:'Novorizontino', exClube:'Red Bull Bragantino', categoria:'Base', carta:'12.jpg', foto:'bruno-marcello.jpeg' },
+  { slug:'bruno-marcello',  nome:'Bruno Marcello',  posicao:'Zagueiro',         ano:'2012', clube:'Novorizontino', exClube:'Red Bull Bragantino', escudoEx:'bragantino.svg', categoria:'Base', carta:'12.jpg', foto:'bruno-marcello.jpeg' },
   { slug:'caio-vandalete',  nome:'Caio Vandalete',  posicao:'Goleiro',          altura:'1,87 m', ano:'2010', clube:'Vasco da Gama',         exClube:'Cruzeiro', categoria:'Base', carta:'13.jpg', foto:'caio.jpeg' },
-  { slug:'justin-cano',     nome:'Justin Cano',     posicao:'Zagueiro',         altura:'1,86 m', ano:'2002', clube:'Mineros de Zacatecas',  exClube:'Diriangén FC', pais:'México', escudo:'diriangen.png', carta:'14.jpg',
+  { slug:'justin-cano',     nome:'Justin Cano',     posicao:'Zagueiro',         altura:'1,86 m', ano:'2002', clube:'Mineros de Zacatecas',  exClube:'Diriangén FC', escudoEx:'diriangen.png', pais:'México', carta:'14.jpg', videos:['_bC2Iscj_MY','PnlmuaBk0OU'],
     perfil:'https://www.transfermarkt.com.br/justing-cano/profil/spieler/763927', perfilNome:'Transfermarkt', perfilLogo:'transfermarkt.png' },
-  { slug:'alison-rodrigo',  nome:'Alison Rodrigo',  posicao:'Lateral-direito',  altura:'1,87 m', ano:'1993', carta:'15.jpg' },
+  { slug:'alison-rodrigo',  nome:'Alison Rodrigo',  posicao:'Lateral-direito',  altura:'1,87 m', ano:'1993', carta:'15.jpg', videos:['jKSMO7I1DpA','Su9Lz9WBUDA'] },
   { slug:'lucca-schmidt',   nome:'Lucca Schmidt',   posicao:'Lateral-esquerdo', clube:'Caldense',            foto:'lucca-schmidt.jpeg' },
   { slug:'joao-victor',     nome:'João Victor',     posicao:'Goleiro',          clube:'Caldense',            foto:'joao-victor.jpeg' },
   { slug:'jackson',         nome:'Jackson',         posicao:'Atacante',         clube:'Goianésia',           foto:'jackson.jpeg' },
@@ -169,7 +169,7 @@ for (const a of ATLETAS) {
     a.altura && ['Altura', a.altura],
     a.ano && ['Ano', a.ano],
     a.categoria && a.categoria.startsWith('Sub') && ['Categoria', a.categoria],
-    a.clube && ['Clube', a.clube],
+    a.clube && ['Clube', a.clube, a.escudo],
     a.pais && ['País', a.pais],
   ].filter(Boolean);
 
@@ -198,6 +198,14 @@ main{width:min(1080px,92vw);margin-inline:auto;padding:7.5rem 0 4rem}
 .foto-atual img{display:block;width:100%;height:auto}
 .foto-atual figcaption{padding:.7rem 1rem;font-size:.75rem;color:var(--ak-texto-suave);background:#0A0B11}
 @media (max-width:820px){.perfil{grid-template-columns:1fr}.perfil .arte{max-width:420px;margin-inline:auto}}
+.escudo{height:22px;width:auto;display:inline-block;vertical-align:-4px;margin-right:.45rem}
+.ak-ficha dd .escudo{height:24px;vertical-align:-5px}
+.videos{margin-top:clamp(2.5rem,6vh,4rem)}
+.videos h2{font-family:var(--sc-font-display);font-size:1.4rem;color:var(--ak-branco);margin:0 0 .35rem}
+.videos>p{color:var(--ak-texto-suave);font-size:.875rem;margin:0 0 1.3rem}
+.videos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:1.2rem}
+.video-frame{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;border:1px solid var(--ak-branco-06);border-top-color:rgba(255,255,255,.16);box-shadow:0 18px 44px -20px rgba(0,0,0,.8)}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 </style>
 </head>
 <body>
@@ -221,9 +229,9 @@ ${nav(pfx)}
       </div>
       <h1>${esc(a.nome)}</h1>
       <dl class="ak-ficha">
-${linhas.map(([k,v]) => `        <div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('\n')}
+${linhas.map(([k,v,cr]) => `        <div><dt>${k}</dt><dd>${cr?`<img class="escudo" src="${pfx}assets/img/${cr}" alt="" aria-hidden="true">`:''}${esc(v)}</dd></div>`).join('\n')}
       </dl>
-      ${a.exClube ? `<p class="historico">Passagem anterior: <b>${esc(a.exClube)}</b>.</p>` : ''}
+      ${a.exClube ? `<p class="historico">Passagem anterior: ${a.escudoEx?`<img class="escudo" src="${pfx}assets/img/${a.escudoEx}" alt="" aria-hidden="true">`:''}<b>${esc(a.exClube)}</b>.</p>` : ''}
       <div class="acoes">
         <a class="ak-btn" href="${WHATS}"><span>Falar no WhatsApp</span></a>
         ${a.perfil ? `<a class="ak-btn ak-btn--fantasma perfil-ext" href="${a.perfil}" rel="noopener" aria-label="Perfil de ${esc(a.nome)} no ${a.perfilNome}"><img src="${pfx}assets/img/${a.perfilLogo}" alt="${a.perfilNome}"></a>` : ''}
@@ -235,6 +243,14 @@ ${linhas.map(([k,v]) => `        <div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).jo
       </figure>` : ''}
     </div>
   </div>
+  ${(a.videos && a.videos.length) ? `
+  <section class="videos ak-revela" data-atraso="1" aria-label="Vídeos de ${esc(a.nome)}">
+    <h2>O atleta em campo</h2>
+    <p>Lances e destaques de ${esc(a.nome)}.</p>
+    <div class="videos-grid">
+${a.videos.map((v,i) => `      <div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/${v}" title="Vídeo de ${esc(a.nome)} em campo${i ? ' · ' + (i+1) : ''}" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>`).join('\n')}
+    </div>
+  </section>` : ''}
 </main>
 ${rodape(pfx)}
 ${rodapeJs}

@@ -185,6 +185,12 @@ section[id]{scroll-margin-top:72px}
 @media (prefers-reduced-motion: reduce){
   .rail{flex-wrap:wrap;justify-content:center}
 }
+@media (max-width:700px){
+  /* card final compacto no celular: sem proporção de carta, botão com folga */
+  .rail__fim{aspect-ratio:auto;width:min(74vw,280px);padding:2.2rem 1.1rem}
+  .rail__fim p{font-size:1.05rem;margin-bottom:.9rem}
+  .rail__fim .ak-btn{padding-inline:1.3rem;font-size:.8rem}
+}
 
 /* ATO 4 · SOBRE */
 .sobre-flow{position:relative;overflow:clip;padding-block:clamp(3.5rem,10vh,6rem)}
@@ -198,6 +204,9 @@ section[id]{scroll-margin-top:72px}
   font-size:clamp(4rem,16vw,12rem);line-height:1;white-space:nowrap;
   color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.1);
   pointer-events:none;user-select:none;
+}
+@media (max-width:700px){
+  .sobre-flow .fantasma{font-size:11vw} /* cabe inteiro na tela do celular */
 }
 /* ATO 5 · PAÍSES (respiros reduzidos) */
 .paises{padding-top:clamp(1.5rem,4vh,3rem);padding-bottom:clamp(3rem,8vh,5rem)}
