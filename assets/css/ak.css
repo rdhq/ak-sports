@@ -1,0 +1,238 @@
+/* ============================================================
+   AK SPORTS · site
+   Tema sobre o engine scrollcraft + componentes do design system
+   (design_system.html). Não restilizar .sc-* nem [data-sc-*].
+   ============================================================ */
+
+@font-face{font-family:'Geom Graphic';src:url('../fonts/Geom-Graphic-W03-Light.ttf') format('truetype');font-weight:300;font-display:swap}
+@font-face{font-family:'Geom Graphic';src:url('../fonts/Geom-Graphic-W03-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Geom Graphic';src:url('../fonts/Geom-Graphic-W03-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+
+:root{
+  /* tema do engine: seis cores e duas faces */
+  --sc-canvas:#050609;
+  --sc-surface:#0A0B10;
+  --sc-ink:#EFEDE8;
+  --sc-ink-soft:#BDB9B0;
+  --sc-accent:#FFC000;
+  --sc-accent-ink:#141005;
+  --sc-font-display:'Geom Graphic','Montserrat','Arial Black',sans-serif;
+  --sc-font-text:'Montserrat','Segoe UI','Helvetica Neue',Arial,sans-serif;
+
+  /* tokens AK (design_system.html) */
+  --ak-ouro:#FFC000; --ak-ouro-vivo:#FFCC00; --ak-ouro-claro:#FFCE3B;
+  --ak-grafite:#0A0B10; --ak-chumbo:#12131A; --ak-carvao:#050609;
+  --ak-branco:#FFFFFF; --ak-texto:#EFEDE8; --ak-texto-suave:#BDB9B0;
+  --ak-sucesso:#32AA6E; --ak-erro:#E5484D;
+  --ak-ouro-64:rgba(255,192,0,.64); --ak-ouro-32:rgba(255,192,0,.32);
+  --ak-ouro-16:rgba(255,192,0,.16); --ak-ouro-08:rgba(255,192,0,.08);
+  --ak-branco-12:rgba(255,255,255,.12); --ak-branco-06:rgba(255,255,255,.06);
+  --ak-g-painel:linear-gradient(to bottom,#12131A,#0A0B10);
+  --ak-raio-pill:100px; --ak-raio-lg:24px; --ak-raio-md:16px; --ak-raio-sm:10px;
+  --ak-ease-out:cubic-bezier(.22,1,.36,1);
+  --ak-ease-expo:cubic-bezier(.16,1,.3,1);
+  --ak-dur-1:.16s; --ak-dur-2:.4s; --ak-dur-3:.8s;
+  --z-nav:100;
+}
+
+::selection{background:var(--ak-ouro);color:#141005}
+h1,h2,h3,h4{text-wrap:balance}
+p{text-wrap:pretty}
+img{max-width:100%}
+
+/* ---------- NAVBAR (design system .ak-nav) ---------- */
+.ak-nav{
+  position:fixed;inset:0 0 auto;z-index:var(--z-nav);
+  background:rgba(5,6,9,.88);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--ak-branco-06);
+}
+.ak-nav__inner{
+  width:min(1200px,92vw);margin-inline:auto;
+  display:flex;align-items:center;gap:1.6rem;min-height:64px;
+}
+.ak-nav__logo{display:flex;align-items:center;gap:.6rem;margin-right:auto;text-decoration:none}
+.ak-nav__logo img{height:32px;width:auto}
+.ak-nav__logo b{font-family:var(--sc-font-display);font-weight:700;font-size:.95rem;color:var(--ak-branco);letter-spacing:.06em}
+.ak-nav__links{display:flex;gap:.2rem;list-style:none;margin:0;padding:0}
+.ak-nav__link{
+  position:relative;display:inline-block;padding:.55rem .8rem;
+  color:var(--ak-texto);text-decoration:none;
+  font-size:.875rem;font-weight:600;
+  transition:color var(--ak-dur-1) var(--ak-ease-out);
+}
+.ak-nav__link::after{
+  content:"";position:absolute;left:.8rem;right:.8rem;bottom:.3rem;height:2px;
+  background:var(--ak-ouro);transform:scaleX(0);transform-origin:left;
+  transition:transform var(--ak-dur-2) var(--ak-ease-expo);
+}
+.ak-nav__link:hover{color:var(--ak-ouro)}
+.ak-nav__link:hover::after,.ak-nav__link[aria-current]::after{transform:scaleX(1)}
+@media (max-width:760px){
+  .ak-nav__links{display:none}
+  .ak-nav .ak-btn--sm{padding:.45rem 1rem}
+}
+
+/* ---------- BOTÕES (design system .ak-btn) ---------- */
+.ak-btn{
+  --btn-bg:var(--ak-ouro); --btn-cor:#141005;
+  position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  min-height:48px;padding:.8rem 1.9rem;
+  border:0;border-radius:var(--ak-raio-pill);
+  background:var(--btn-bg);color:var(--btn-cor);
+  font-family:var(--sc-font-text);font-size:.875rem;font-weight:700;letter-spacing:.02em;
+  text-decoration:none;cursor:pointer;overflow:hidden;white-space:nowrap;
+  transition:translate .4s cubic-bezier(.2,.8,.2,1),scale .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s cubic-bezier(.2,.8,.2,1),background var(--ak-dur-1),color var(--ak-dur-1);
+}
+.ak-btn:hover{translate:0 -3px;box-shadow:0 12px 32px -8px var(--ak-ouro-64)}
+.ak-btn:active{translate:0 0;scale:.98;box-shadow:0 3px 12px -4px var(--ak-ouro-64)}
+.ak-btn::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);
+  translate:-130% 0;
+}
+.ak-btn:hover::before{animation:ak-varredura .7s var(--ak-ease-out)}
+.ak-btn>*{position:relative}
+.ak-btn--vazado{--btn-bg:transparent;--btn-cor:var(--ak-ouro);box-shadow:inset 0 0 0 1.5px var(--ak-ouro-64)}
+.ak-btn--vazado:hover{--btn-bg:var(--ak-ouro-08);box-shadow:inset 0 0 0 1.5px var(--ak-ouro),0 8px 28px -8px var(--ak-ouro-32)}
+.ak-btn--fantasma{--btn-bg:transparent;--btn-cor:var(--ak-texto)}
+.ak-btn--fantasma:hover{--btn-cor:var(--ak-ouro);box-shadow:none;background:var(--ak-branco-06)}
+.ak-btn--sm{min-height:38px;padding:.45rem 1.2rem;font-size:.75rem}
+.ak-btn--lg{min-height:56px;padding:1rem 2.4rem;font-size:1rem}
+
+/* ---------- BADGES ---------- */
+.ak-badge{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.3rem .8rem;border-radius:var(--ak-raio-pill);
+  font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--ak-ouro);color:#141005;
+}
+.ak-badge--vazado{background:var(--ak-ouro-08);color:var(--ak-ouro);box-shadow:inset 0 0 0 1px var(--ak-ouro-32)}
+.ak-badge--neutro{background:var(--ak-branco-06);color:var(--ak-texto);box-shadow:inset 0 0 0 1px var(--ak-branco-12)}
+
+/* ---------- CARTA DE ATLETA ---------- */
+.ak-carta-atleta{
+  position:relative;display:block;
+  border-radius:var(--ak-raio-md);overflow:hidden;background:#111;
+  box-shadow:0 10px 34px -10px rgba(0,0,0,.7),0 0 0 1px var(--ak-branco-12),inset 0 1px 0 rgba(255,255,255,.1);
+  transition:translate var(--ak-dur-2) var(--ak-ease-out),box-shadow var(--ak-dur-2) var(--ak-ease-out);
+}
+.ak-carta-atleta img{width:100%;aspect-ratio:410/730;object-fit:cover;display:block;transition:scale .9s var(--ak-ease-out)}
+.ak-carta-atleta::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.18) 50%,transparent 66%);
+  translate:-140% 0;
+}
+@media (hover:hover) and (pointer:fine){
+  .ak-carta-atleta:hover{
+    translate:0 -8px;
+    box-shadow:0 26px 54px -16px rgba(0,0,0,.85),0 0 40px -6px var(--ak-ouro-32),0 0 0 1px var(--ak-ouro-64);
+  }
+  .ak-carta-atleta:hover img{scale:1.05}
+  .ak-carta-atleta:hover::after{animation:ak-varredura .9s var(--ak-ease-out)}
+}
+.ak-carta-atleta__info{
+  position:absolute;inset:auto 0 0;
+  padding:2.6rem 1.1rem 1.1rem;
+  background:linear-gradient(transparent,rgba(0,0,0,.92));
+  display:flex;align-items:flex-end;justify-content:space-between;gap:.7rem;
+}
+.ak-carta-atleta__nome{
+  font-family:var(--sc-font-display);font-weight:700;font-size:1.15rem;
+  color:var(--ak-branco);line-height:1.12;margin:0;
+}
+.ak-carta-atleta__nome small{
+  display:block;font-family:var(--sc-font-text);font-weight:600;
+  font-size:.7rem;color:var(--ak-ouro);
+  letter-spacing:.08em;text-transform:uppercase;margin-top:.3rem;
+}
+/* placeholder para atleta sem foto */
+.ak-carta-atleta--vazia{display:grid;place-items:center;aspect-ratio:410/730;background:var(--ak-g-painel)}
+.ak-carta-atleta--vazia img.marca{width:52%;aspect-ratio:auto;opacity:.14}
+
+/* ---------- CARD DE SÓCIO ---------- */
+.ak-carta-socio{
+  display:grid;grid-template-columns:auto 1fr;gap:1.4rem;align-items:start;
+  padding:1.7rem;
+  background:var(--ak-g-painel);
+  border:1px solid var(--ak-branco-06);
+  border-radius:var(--ak-raio-lg);
+  transition:border-color var(--ak-dur-2) var(--ak-ease-out),box-shadow var(--ak-dur-2) var(--ak-ease-out);
+}
+.ak-carta-socio:hover{border-color:var(--ak-ouro-32);box-shadow:0 18px 44px -18px rgba(0,0,0,.8),0 0 36px -12px var(--ak-ouro-16)}
+.ak-carta-socio img{
+  width:104px;height:104px;border-radius:50%;object-fit:cover;object-position:top;
+  box-shadow:0 0 0 3px var(--ak-carvao),0 0 0 5px var(--ak-ouro);
+}
+.ak-carta-socio h3{font-family:var(--sc-font-display);font-size:1.3rem;margin:.1rem 0 .2rem;color:var(--ak-branco)}
+.ak-carta-socio .cargo{color:var(--ak-ouro);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.ak-carta-socio p{color:var(--ak-texto-suave);font-size:.875rem;line-height:1.7;margin:.6rem 0 0;max-width:52ch}
+@media (max-width:560px){.ak-carta-socio{grid-template-columns:1fr}.ak-carta-socio img{width:88px;height:88px}}
+
+/* ---------- FICHA TÉCNICA ---------- */
+.ak-ficha{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:1px;background:var(--ak-branco-12);
+  border-radius:var(--ak-raio-md);overflow:hidden;
+  border:1px solid var(--ak-branco-12);
+  border-top-color:rgba(255,255,255,.18);
+  box-shadow:0 14px 40px -18px rgba(0,0,0,.7);margin:0;
+}
+.ak-ficha div{background:#0A0B11;padding:1.05rem 1.15rem;transition:background var(--ak-dur-1)}
+.ak-ficha div:hover{background:#131208}
+.ak-ficha dt{font-size:.72rem;font-weight:600;color:var(--ak-texto-suave);letter-spacing:.08em;text-transform:uppercase;margin:0}
+.ak-ficha dd{font-family:var(--sc-font-display);font-weight:700;font-size:1.15rem;color:var(--ak-ouro);margin:.3rem 0 0}
+
+/* ---------- REVELAÇÃO AO ROLAR (páginas documento) ---------- */
+.js .ak-revela{opacity:0;translate:0 36px;transition:opacity var(--ak-dur-3) var(--ak-ease-out),translate var(--ak-dur-3) var(--ak-ease-expo)}
+.js .ak-revela.na-tela{opacity:1;translate:0 0}
+.js .ak-revela[data-atraso="1"]{transition-delay:.08s}
+.js .ak-revela[data-atraso="2"]{transition-delay:.16s}
+.js .ak-revela[data-atraso="3"]{transition-delay:.24s}
+
+/* Entradas premium: leve blur + scale que assentam (padrão da referência aura,
+   easing 0.16,1,0.3,1). Sobrepõe o estado do engine sem editá-lo. */
+@media (prefers-reduced-motion: no-preference){
+  [data-sc-in],[data-sc-stagger]>*{
+    transform:translate3d(0,26px,0) scale(.985);
+    filter:blur(5px);
+    transition:opacity .85s var(--ak-ease-expo),transform .85s var(--ak-ease-expo),filter .7s var(--ak-ease-out);
+  }
+  [data-sc-in].sc-in,[data-sc-stagger]>.sc-in{filter:blur(0)}
+  .js .ak-revela{scale:.985;filter:blur(5px);
+    transition:opacity .85s var(--ak-ease-expo),translate .85s var(--ak-ease-expo),scale .85s var(--ak-ease-expo),filter .7s var(--ak-ease-out)}
+  .js .ak-revela.na-tela{scale:1;filter:blur(0)}
+}
+
+/* Blobs ambientes dourados (deriva lenta, padrão da referência) */
+.ak-blob{
+  position:absolute;border-radius:50%;pointer-events:none;z-index:0;
+  background:radial-gradient(circle,rgba(255,192,0,.10) 0%,rgba(255,192,0,.05) 40%,transparent 70%);
+  will-change:transform;
+  animation:ak-deriva 16s ease-in-out infinite alternate;
+}
+@keyframes ak-deriva{from{transform:translate(0,0)}to{transform:translate(44px,60px)}}
+@media (prefers-reduced-motion:reduce){.ak-blob{animation:none}}
+
+/* ---------- RODAPÉ ---------- */
+.ak-rodape{border-top:1px solid var(--ak-branco-06);padding:2.6rem 0;background:var(--ak-carvao)}
+.ak-rodape__inner{
+  width:min(1200px,92vw);margin-inline:auto;
+  display:flex;flex-wrap:wrap;align-items:center;gap:1.4rem;justify-content:space-between;
+}
+.ak-rodape p{color:var(--ak-texto-suave);font-size:.8rem;margin:0}
+.ak-rodape__social{display:flex;gap:.7rem}
+.ak-btn--icone{width:46px;min-height:46px;padding:0;border-radius:50%}
+
+/* ---------- KEYFRAMES ---------- */
+@keyframes ak-varredura{to{translate:130% 0}}
+@keyframes ak-pulso-glow{
+  0%,100%{box-shadow:0 0 0 0 var(--ak-ouro-64)}
+  50%{box-shadow:0 0 0 12px rgba(255,192,0,0)}
+}
+@keyframes ak-flutuar{0%,100%{translate:0 0}50%{translate:0 -10px}}
+
+@media (prefers-reduced-motion:reduce){
+  .js .ak-revela{opacity:1;translate:0 0;transition:none}
+  .ak-btn::before,.ak-carta-atleta::after{animation:none!important}
+}

@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AK Sports · Gestão de carreira de atletas</title>
+<meta name="description" content="AK Sports Management: gestão de carreira, contratos e marketing esportivo para jogadores de futebol. Conheça o elenco.">
+<link rel="canonical" href="https://aksports.com.br">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="AK Sports Management">
+<meta property="og:title" content="AK Sports · Gestão de carreira de atletas">
+<meta property="og:description" content="A agência que transforma o potencial de jogadores de futebol em sucesso. Conheça o elenco.">
+<meta property="og:url" content="https://aksports.com.br">
+<meta property="og:image" content="https://aksports.com.br/assets/img/capa-elenco.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/logo-ak-crop.png">
+<link rel="preload" href="assets/fonts/Geom-Graphic-W03-Bold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/scrollcraft.css">
+<link rel="stylesheet" href="assets/css/ak.css">
+<style>
+/* ---------- página: home ---------- */
+
+/* ATO 1 · HERO: a capa do elenco (imagem original do site antigo).
+   O logo AK embutido na arte fica livre ao centro; o texto senta embaixo. */
+.hero-stage{display:grid;align-content:end;justify-items:center;width:min(1200px,92vw);margin-inline:auto;height:100%;padding-bottom:clamp(1.6rem,5vh,3.2rem)}
+.hero-copy{max-width:56rem;text-align:center}
+.hero-copy h1{margin-inline:auto}
+.hero-copy .sc-body{margin-inline:auto}
+.hero-acoes{justify-content:center}
+.hero-copy .chip{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.4rem 1rem;border:1px solid var(--ak-ouro-32);border-radius:100px;
+  background:#0A0B10;color:var(--ak-ouro-claro);
+  font-size:.78rem;font-weight:600;letter-spacing:.04em;
+}
+.hero-copy .chip i{width:7px;height:7px;border-radius:50%;background:var(--ak-ouro);animation:ak-pulso-glow 2.2s ease-in-out infinite}
+.hero-copy h1{margin:0 0 .25em;white-space:nowrap}
+.hero-copy .ouro{color:var(--ak-ouro)}
+.hero-copy .sc-body{max-width:60ch;color:var(--ak-texto);margin-top:0}
+.hero-acoes{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:1.3rem}
+@media (max-width:700px){.hero-copy h1{white-space:normal}}
+
+/* fundo do hero: CAPA com todos os atletas + logo AK ao centro,
+   com folga vertical para o parallax não descolar das bordas */
+.hero-bg{position:absolute;inset:-16% 0 0;width:100%;height:116%;object-fit:cover;object-position:center;pointer-events:none}
+/* faixa de densidade embaixo, onde o texto senta; o logo da arte fica livre acima */
+.hero-scrim{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to top,rgba(5,6,9,.95) 0%,rgba(5,6,9,.76) 30%,rgba(5,6,9,.38) 54%,transparent 68%);
+}
+@media (max-width:900px){
+  .hero-scrim{background:linear-gradient(to top,rgba(5,6,9,.97) 0%,rgba(5,6,9,.88) 38%,rgba(5,6,9,.52) 62%,transparent 80%)}
+}
+
+/* ATO 2 · SÓCIOS — cards editoriais espelhados */
+section[id]{scroll-margin-top:72px}
+.socios{position:relative;overflow:clip;padding-block:clamp(3rem,9vh,5.5rem)}
+.socios .ak-blob{width:420px;height:420px;top:-140px;right:-120px}
+.socios .sc-wrap{display:grid;gap:1.6rem}
+.socios-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(460px,100%),1fr));gap:1.6rem}
+
+.socio{
+  position:relative;display:grid;
+  grid-template-columns:minmax(0,.44fr) minmax(0,.56fr);
+  min-height:440px;overflow:hidden;
+  border-radius:var(--ak-raio-lg);
+  background:var(--ak-g-painel);
+  border:1px solid var(--ak-branco-06);
+  border-top-color:rgba(255,255,255,.16);
+  box-shadow:0 24px 60px -28px rgba(0,0,0,.8),inset 0 0 40px rgba(255,255,255,.015);
+  transition:border-color .5s var(--ak-ease-out),box-shadow .5s var(--ak-ease-out),translate .5s var(--ak-ease-out);
+}
+/* brilho dourado de canto (referência aura), intensifica no hover */
+.socio__corpo::before{
+  content:"";position:absolute;top:-50px;right:-50px;z-index:0;
+  width:260px;height:260px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,192,0,.16) 0%,rgba(255,192,0,.07) 45%,transparent 70%);
+  opacity:.6;
+  transition:opacity .6s var(--ak-ease-out);
+}
+.socio--invertido .socio__corpo::before{right:auto;left:-50px}
+.socio:hover .socio__corpo::before{opacity:1}
+.socio--invertido{grid-template-columns:minmax(0,.56fr) minmax(0,.44fr)}
+.socio--invertido .socio__foto{order:2}
+@media (hover:hover) and (pointer:fine){
+  .socio:hover{
+    translate:0 -6px;border-color:var(--ak-ouro-32);
+    box-shadow:0 26px 60px -20px rgba(0,0,0,.85),0 0 44px -12px var(--ak-ouro-32);
+  }
+  .socio:hover .socio__foto img{scale:1.05}
+  .socio:hover .socio__foto::before{animation:ak-varredura 1s var(--ak-ease-out)}
+}
+.socio__foto{position:relative;overflow:hidden;min-height:100%}
+.socio__foto img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 18%;
+  scale:1.001;transition:scale 1.1s var(--ak-ease-out);
+}
+.socio__foto::before{ /* varredura de luz no hover */
+  content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.2) 50%,transparent 66%);
+  translate:-140% 0;
+}
+.socio__foto::after{ /* fio dourado + fusão com o painel */
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to right,transparent 72%,rgba(5,6,9,.55));
+  border-right:1px solid var(--ak-ouro-32);
+}
+.socio--invertido .socio__foto::after{
+  background:linear-gradient(to left,transparent 72%,rgba(5,6,9,.55));
+  border-right:0;border-left:1px solid var(--ak-ouro-32);
+}
+.socio__corpo{
+  position:relative;display:flex;flex-direction:column;justify-content:center;
+  gap:.65rem;padding:clamp(1.6rem,3vw,2.6rem);
+}
+.socio__cargo{
+  color:var(--ak-ouro);font-size:.72rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+}
+.socio__corpo h3{
+  font-family:var(--sc-font-display);font-weight:700;
+  font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1.08;
+  color:var(--ak-branco);margin:0;
+}
+.socio__bio{color:var(--ak-texto-suave);font-size:.9rem;line-height:1.75;margin:.2rem 0 0;max-width:46ch}
+.socio__cred{
+  margin:1.1rem 0 0;padding-top:1rem;
+  border-top:1px solid var(--ak-branco-06);
+  color:var(--ak-texto);font-size:.75rem;font-weight:600;
+  letter-spacing:.05em;text-transform:uppercase;
+  display:flex;flex-wrap:wrap;gap:.35rem 1rem;
+}
+.socio__cred span{display:inline-flex;align-items:center;gap:.45rem}
+.socio__cred i{width:5px;height:5px;border-radius:50%;background:var(--ak-ouro);flex:none}
+.socio__iniciais{ /* iniciais-fantasma, eco da marca d'água AK */
+  position:absolute;right:-.06em;bottom:-.18em;z-index:0;
+  font-family:var(--sc-font-display);font-weight:700;
+  font-size:clamp(6rem,11vw,9.5rem);line-height:1;
+  color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.08);
+  pointer-events:none;user-select:none;
+}
+.socio--invertido .socio__iniciais{right:auto;left:-.06em}
+.socio__corpo>*{position:relative;z-index:1}
+@media (max-width:760px){
+  .socio,.socio--invertido{grid-template-columns:1fr;min-height:0}
+  .socio__foto,.socio--invertido .socio__foto{order:0;min-height:300px}
+  .socio__foto::after,.socio--invertido .socio__foto::after{
+    background:linear-gradient(to bottom,transparent 62%,rgba(5,6,9,.7));
+    border:0;border-bottom:1px solid var(--ak-ouro-32);
+  }
+  .socio__foto img{object-position:center 12%}
+}
+
+/* ATO 3 · ELENCO (pico): esteira de cartas */
+.rail{display:flex;align-items:center;gap:clamp(1.2rem,2.6vw,2.2rem);height:100%;padding-inline:clamp(1rem,4vw,3rem)}
+.rail__lead{flex:0 0 auto;max-width:24rem;padding-right:1rem}
+.rail__lead h2{margin:0 0 .5rem}
+.rail__lead p{color:var(--ak-texto-suave);margin:0}
+.rail .ak-carta-atleta{flex:0 0 auto;width:clamp(230px,24vw,300px)}
+.rail__fim{
+  flex:0 0 auto;width:clamp(240px,24vw,300px);aspect-ratio:410/730;
+  display:grid;place-items:center;text-align:center;gap:0;
+  border:1.5px dashed var(--ak-ouro-32);border-radius:16px;
+  background:
+    radial-gradient(120% 90% at 80% 0%,rgba(255,192,0,.14),transparent 55%),
+    linear-gradient(165deg,rgba(255,255,255,.05),rgba(255,255,255,.015) 60%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
+  padding:1.4rem;
+}
+.rail__fim p{font-family:var(--sc-font-display);font-weight:700;font-size:1.2rem;color:var(--ak-branco);margin:0 0 1.1rem}
+/* cartas "distribuídas do maço" conforme --sc-p (1ª peça isenta):
+   começam sobrepostas e giradas, e assentam no trilho como num deal */
+@media (prefers-reduced-motion: no-preference){
+  .rail>*:not(:first-child){
+    --deal:min(calc(var(--sc-p,1) * 2.4), 1);
+    opacity:calc(.55 + var(--deal) * .45);
+    translate:calc((1 - var(--deal)) * -120px) calc((1 - var(--deal)) * 14px);
+    rotate:calc((1 - var(--deal)) * 5deg);
+  }
+}
+@media (prefers-reduced-motion: reduce){
+  .rail{flex-wrap:wrap;justify-content:center}
+}
+
+/* ATO 4 · SOBRE */
+.sobre-flow{position:relative;overflow:clip;padding-block:clamp(3.5rem,10vh,6rem)}
+.sobre-flow .fantasma{left:50%;top:50%;translate:-50% -50%}
+.sobre-linhas{position:relative;width:min(820px,88vw);margin-inline:auto;text-align:center;display:grid;gap:1.1rem}
+.sobre-linhas>p{margin:0;font-family:var(--sc-font-display);font-weight:400;font-size:clamp(1.35rem,3vw,2.2rem);line-height:1.3;color:var(--ak-branco)}
+.sobre-linhas>p:first-child{font-size:clamp(1.7rem,4vw,2.9rem);font-weight:700}
+.sobre-linhas>p b{color:var(--ak-ouro);font-weight:700}
+.sobre-stage .fantasma,.sobre-flow .fantasma{
+  position:absolute;font-family:var(--sc-font-display);font-weight:700;
+  font-size:clamp(4rem,16vw,12rem);line-height:1;white-space:nowrap;
+  color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.1);
+  pointer-events:none;user-select:none;
+}
+/* ATO 5 · PAÍSES (respiros reduzidos) */
+.paises{padding-top:clamp(1.5rem,4vh,3rem);padding-bottom:clamp(3rem,8vh,5rem)}
+.paises .sc-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.paises h2{margin:0 0 .6rem}
+.paises .numeros{display:flex;gap:clamp(1.5rem,4vw,3rem);margin:1.6rem 0}
+.paises .numeros div{display:grid;gap:.15rem}
+.paises .numeros b{font-family:var(--sc-font-display);font-weight:700;font-size:clamp(1.9rem,4vw,2.8rem);color:var(--ak-ouro);line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.paises .numeros span{font-size:.75rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ak-texto-suave)}
+.paises .lista{display:flex;flex-wrap:wrap;gap:.6rem;padding:0;margin:0;list-style:none}
+.paises .lista li{
+  padding:.45rem 1rem;border-radius:100px;font-size:.8rem;font-weight:600;
+  background:var(--ak-branco-06);color:var(--ak-texto);
+  box-shadow:inset 0 0 0 1px var(--ak-branco-12);
+}
+.paises .lista li.ativo{background:var(--ak-ouro-08);color:var(--ak-ouro);box-shadow:inset 0 0 0 1px var(--ak-ouro-32)}
+.paises figure{
+  position:relative;margin:0;border-radius:20px;overflow:hidden;
+  border:1px solid var(--ak-branco-06);border-top-color:rgba(255,255,255,.14);
+  background:#08090F;box-shadow:0 24px 60px -28px rgba(0,0,0,.8);
+}
+.paises figure::after{
+  content:"";position:absolute;bottom:-80px;right:-80px;width:300px;height:300px;
+  border-radius:50%;background:radial-gradient(circle,rgba(255,192,0,.13) 0%,rgba(255,192,0,.05) 45%,transparent 70%);pointer-events:none;
+}
+.paises figure img{display:block;width:100%;height:auto}
+@media (max-width:860px){.paises .sc-wrap{grid-template-columns:1fr}}
+
+/* ATO 6 · CONTATO (fechamento) */
+.close-stage{position:relative;display:grid;grid-template-rows:1fr auto;height:100%;overflow:clip}
+/* grade técnica sutil + blob dourado atrás do CTA */
+.close-stage::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:100px 100px;
+  mask-image:radial-gradient(90% 70% at 50% 40%,#000 40%,transparent 100%);
+}
+.close-stage .ak-blob{width:560px;height:560px;left:50%;top:10%;margin-left:-280px;animation-delay:-8s}
+.close-inner,.close-stage .foot{position:relative;z-index:1}
+.close-inner{display:grid;place-items:center;text-align:center;align-content:center;gap:1.3rem;padding:0 6vw}
+.close-inner h2{margin:0}
+.close-inner .sc-body{color:var(--ak-texto-suave);max-width:46ch;margin:0}
+.close-stage .foot{
+  display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;
+  width:min(1200px,92vw);margin-inline:auto;padding:1.4rem 0 2rem;
+  border-top:1px solid var(--ak-branco-06);
+}
+.close-stage .foot p{color:var(--ak-texto-suave);font-size:.78rem;margin:0}
+.close-stage .foot .redes{display:flex;gap:.7rem}
+</style>
+</head>
+<body>
+
+<span data-sc-progress></span>
+<div class="sc-grain" aria-hidden="true"></div>
+
+<header class="ak-nav">
+  <div class="ak-nav__inner">
+    <a class="ak-nav__logo" href="index.html" aria-label="AK Sports, início">
+      <img src="assets/img/logo-ak-crop.png" alt="Logo AK Sports" width="64" height="32">
+      <b>AK&nbsp;SPORTS</b>
+    </a>
+    <nav aria-label="Principal">
+      <ul class="ak-nav__links">
+        <li><a class="ak-nav__link" href="jogadores.html">Jogadores</a></li>
+        <li><a class="ak-nav__link" href="index.html#sobrenos">Ak Agency</a></li>
+        <li><a class="ak-nav__link" href="index.html#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <a class="ak-btn ak-btn--sm" href="https://wa.me/5512981878865"><span>Falar no WhatsApp</span></a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 1 · HERO: pin + assinatura "abrir do pacote" -->
+  <section data-sc-act="pin" data-sc-span="1.7" data-sc-drift="#050609">
+    <div data-sc-stage>
+      <img class="hero-bg" src="assets/img/capa-elenco.webp" alt="Todos os atletas do elenco da AK Sports lado a lado, com o logo AK Sports Management ao centro" data-sc-parallax="-1" width="2048" height="1152">
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="hero-stage">
+        <div class="hero-copy">
+          <div data-sc-cue="0 0.9 0">
+            <h1 class="sc-display sc-display--lg" data-sc-kinetic="lines">O elenco que vale <span class="ouro">ouro</span>.</h1>
+            <p class="sc-body">Gestão de carreira, contratos e marketing esportivo para jogadores de futebol de alto nível.</p>
+          </div>
+          <div class="hero-acoes" data-sc-cue="0 0.9 0">
+            <a class="ak-btn ak-btn--lg" href="jogadores.html"><span>Ver o elenco completo</span></a>
+            <a class="ak-btn ak-btn--vazado ak-btn--lg" href="https://wa.me/5512981878865"><span>Falar no WhatsApp</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · SÓCIOS: flow -->
+  <section id="sobrenos" class="sc-section socios" data-sc-act="flow" data-sc-drift="#08090F">
+    <span class="ak-blob" aria-hidden="true"></span>
+    <div class="sc-wrap">
+      <div class="sc-stack" data-sc-in data-sc-stagger="60">
+        <h2 class="sc-display sc-display--lg">Quem comanda o jogo</h2>
+        <p class="sc-body" style="color:var(--ak-texto-suave);max-width:62ch">A AK Sports Management é a agência que transforma o potencial de jogadores de futebol em sucesso. À frente dela, dois sócios que vivem o mercado por dentro.</p>
+      </div>
+      <div class="socios-grid" data-sc-in data-sc-stagger="90">
+        <article class="socio">
+          <figure class="socio__foto" style="margin:0">
+            <img src="assets/img/andre-soares.jpeg" alt="André Soares diante das luzes de um estádio" width="900" height="1200" loading="lazy">
+          </figure>
+          <div class="socio__corpo">
+            <span class="socio__iniciais" aria-hidden="true">AS</span>
+            <span class="socio__cargo">CEO · Fundador</span>
+            <h3>André Soares</h3>
+            <p class="socio__bio">Empresário há mais de 14 anos, fundou a AK Sports Management em 2022: consultoria esportiva especializada na gestão de carreira de atletas de alto nível, com visão estratégica e compromisso com o sucesso de quem representa.</p>
+            <p class="socio__cred"><span><i aria-hidden="true"></i>14+ anos de mercado</span><span><i aria-hidden="true"></i>Parceria Victrix</span><span><i aria-hidden="true"></i>Elenco Sports</span></p>
+          </div>
+        </article>
+        <article class="socio socio--invertido">
+          <figure class="socio__foto" style="margin:0">
+            <img src="assets/img/diego-gomes.jpeg" alt="Retrato de Diego Gomes" width="900" height="1200" loading="lazy">
+          </figure>
+          <div class="socio__corpo">
+            <span class="socio__iniciais" aria-hidden="true">DG</span>
+            <span class="socio__cargo">Agente · Captação</span>
+            <h3>Diego Gomes</h3>
+            <p class="socio__bio">Agente de futebol na captação de talentos. Ex-jogador profissional com experiência internacional, une a vivência de campo à formação em Scout e Análise de Desempenho para revelar e desenvolver novos atletas.</p>
+            <p class="socio__cred"><span><i aria-hidden="true"></i>Ex-jogador profissional</span><span><i aria-hidden="true"></i>ABM Galaxy · Oceania</span><span><i aria-hidden="true"></i>Scout &amp; Análise</span></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · ELENCO: pan (o pico) -->
+  <section id="elenco" data-sc-act="pan" data-sc-span="3.2" data-sc-drift="#07080C">
+    <div data-sc-stage>
+      <div class="rail" data-sc-pan="0.06">
+        <div class="rail__lead sc-stack">
+          <h2 class="sc-display sc-display--md">Conheça alguns de nossos atletas</h2>
+          <p class="sc-body">Cada carta é um jogador representado pela AK. Toque para abrir a ficha.</p>
+        </div>
+        <a class="ak-carta-atleta" href="atletas/pablo-santos.html" data-sc-tilt="6">
+          <img src="assets/img/1.jpg" alt="Pablo Santos com a camisa do São Gabriel" loading="lazy" width="410" height="730">
+          <span class="ak-carta-atleta__info"><span class="ak-carta-atleta__nome">Pablo Santos<small>Volante</small></span></span>
+        </a>
+        <a class="ak-carta-atleta" href="atletas/joao-pedro.html" data-sc-tilt="6">
+          <img src="assets/img/7.jpg" alt="João Pedro, atacante do Barra FC" loading="lazy" width="410" height="730">
+          <span class="ak-carta-atleta__info"><span class="ak-carta-atleta__nome">João Pedro<small>Atacante</small></span></span>
+        </a>
+        <a class="ak-carta-atleta" href="atletas/caio-vandalete.html" data-sc-tilt="6">
+          <img src="assets/img/13.jpg" alt="Caio Vandalete, goleiro do Vasco da Gama" loading="lazy" width="410" height="730">
+          <span class="ak-carta-atleta__info"><span class="ak-carta-atleta__nome">Caio Vandalete<small>Goleiro</small></span></span>
+        </a>
+        <a class="ak-carta-atleta" href="atletas/paulinho.html" data-sc-tilt="6">
+          <img src="assets/img/2.jpg" alt="Paulinho, meia-atacante do Red Bull Bragantino" loading="lazy" width="410" height="730">
+          <span class="ak-carta-atleta__info"><span class="ak-carta-atleta__nome">Paulinho<small>Meia-atacante</small></span></span>
+        </a>
+        <a class="ak-carta-atleta" href="atletas/airon-santos.html" data-sc-tilt="6">
+          <img src="assets/img/11.jpg" alt="Airon Santos, goleiro do Al Ittihad" loading="lazy" width="410" height="730">
+          <span class="ak-carta-atleta__info"><span class="ak-carta-atleta__nome">Airon Santos<small>Goleiro</small></span></span>
+        </a>
+        <a class="ak-carta-atleta" href="atletas/bruno-marcello.html" data-sc-tilt="6">
+          <img src="assets/img/12.jpg" alt="Bruno Marcello, zagueiro do Novorizontino" loading="lazy" width="410" height="730">
+          <span class="ak-carta-atleta__info"><span class="ak-carta-atleta__nome">Bruno Marcello<small>Zagueiro</small></span></span>
+        </a>
+        <div class="rail__fim">
+          <div>
+            <p>E o pacote não termina aqui.</p>
+            <a class="ak-btn" href="jogadores.html"><span>Ver o elenco completo</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · SOBRE (manifesto): pin -->
+  <section id="sobre" class="sc-section sobre-flow" data-sc-act="flow" data-sc-drift="#08090F">
+    <span class="fantasma" aria-hidden="true">SOBRE NÓS</span>
+    <div class="sobre-linhas" data-sc-in data-sc-stagger="90">
+      <p>Apresentamos a <b>AK Sports</b>.</p>
+      <p>A agência que transforma o potencial de jogadores de futebol em <b>sucesso</b>.</p>
+      <p>Gestão de carreira. Contratos esportivos. Marketing esportivo.</p>
+      <p>Estratégias para o crescimento profissional do atleta e visibilidade no cenário <b>global</b>.</p>
+    </div>
+  </section>
+
+  <!-- 5 · PAÍSES: flow + reveal + count -->
+  <section class="sc-section paises" data-sc-act="flow" data-sc-drift="#050609">
+    <div class="sc-wrap">
+      <div class="sc-stack" data-sc-in data-sc-stagger="70">
+        <h2 class="sc-display sc-display--lg">Países em que a empresa tem jogadores</h2>
+        <p class="sc-body">Atuação nacional e internacional na identificação de jovens talentos para clubes e mercados cada vez mais exigentes.</p>
+        <div class="numeros">
+          <div><b class="sc-nums" data-sc-count="0 21" data-sc-count-at="0.05 0.5">0</b><span>Atletas</span></div>
+          <div><b class="sc-nums" data-sc-count="0 3" data-sc-count-at="0.05 0.5">0</b><span>Países</span></div>
+          <div><b class="sc-nums" data-sc-count="0 2022" data-sc-count-at="0.05 0.5">0</b><span>Fundação</span></div>
+        </div>
+        <ul class="lista">
+          <li class="ativo">Brasil</li>
+          <li class="ativo">México</li>
+          <li class="ativo">Emirados Árabes Unidos</li>
+        </ul>
+      </div>
+      <figure data-sc-reveal="iris" data-sc-reveal-at="0.12 0.55">
+        <img src="assets/img/mapa.png" alt="Mapa-múndi com os países em que a AK Sports tem jogadores" loading="lazy" width="2560" height="1266">
+      </figure>
+    </div>
+  </section>
+
+  <!-- 6 · CONTATO: pin + pointer (fechamento) -->
+  <section id="contato" data-sc-act="pin" data-sc-span="1.15" data-sc-drift="#050609">
+    <div data-sc-stage class="close-stage" data-sc-spotlight>
+      <span class="ak-blob" aria-hidden="true"></span>
+      <div class="close-inner">
+        <h2 class="sc-display sc-display--lg" data-sc-cue="0 1 0 0" data-sc-kinetic="lines">Seu clube procura um craque?</h2>
+        <p class="sc-body" data-sc-cue="0 1 0 0">A AK Sports responde toda proposta oficial. Fale direto com a nossa mesa.</p>
+        <a class="ak-btn ak-btn--lg" href="https://wa.me/5512981878865" data-sc-magnet="0.26" data-sc-cue="0 1 0 0" data-sc-rise="0"><span>Falar no WhatsApp</span></a>
+      </div>
+      <footer class="foot">
+        <p>© 2026 AK Sports Management. Todos os direitos reservados. Plataforma desenvolvida e administrada pela AK Sports.</p>
+        <div class="redes">
+          <a class="ak-btn ak-btn--vazado ak-btn--icone" href="https://www.instagram.com/ak_sports.management_/" aria-label="Instagram da AK Sports">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".5" fill="currentColor"/></svg>
+          </a>
+          <a class="ak-btn ak-btn--vazado ak-btn--icone" href="https://wa.me/5512981878865" aria-label="WhatsApp da AK Sports">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9.3 8.4 8.6 8.6 0 0 1-3.7-.9L3 20l1-4.9a8.4 8.4 0 1 1 17-3.6Z"/><path d="M9 10c.5 2.5 2.5 4.5 5 5l1.2-1.2c.3-.3.8-.4 1.2-.2l1.6.8"/></svg>
+          </a>
+        </div>
+      </footer>
+    </div>
+  </section>
+
+</main>
+
+<script src="assets/js/scrollcraft.js"></script>
+<script>ScrollCraft.mount(document.body);</script>
+</body>
+</html>
