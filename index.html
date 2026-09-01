@@ -172,6 +172,10 @@ section[id]{scroll-margin-top:72px}
   padding:1.4rem;
 }
 .rail__fim p{font-family:var(--sc-font-display);font-weight:700;font-size:1.2rem;color:var(--ak-branco);margin:0 0 1.1rem}
+.rail__respiro{flex:0 0 auto;width:clamp(.5rem,2vw,1.5rem);height:1px}
+@media (max-width:700px){
+  .rail__respiro{width:calc((100vw - min(74vw,280px)) / 2 - clamp(1.2rem,2.6vw,2.2rem))}
+}
 /* cartas "distribuídas do maço" conforme --sc-p (1ª peça isenta):
    começam sobrepostas e giradas, e assentam no trilho como num deal */
 @media (prefers-reduced-motion: no-preference){
@@ -186,7 +190,7 @@ section[id]{scroll-margin-top:72px}
   .rail{flex-wrap:wrap;justify-content:center}
 }
 @media (max-width:700px){
-  /* card final compacto no celular: sem proporção de carta, botão com folga */
+  /* card final compacto no celular; a MARGEM entra no scrollWidth e centraliza no fim do pan */
   .rail__fim{aspect-ratio:auto;width:min(74vw,280px);padding:2.2rem 1.1rem}
   .rail__fim p{font-size:1.05rem;margin-bottom:.9rem}
   .rail__fim .ak-btn{padding-inline:1.3rem;font-size:.8rem}
@@ -344,7 +348,7 @@ section[id]{scroll-margin-top:72px}
   <!-- 3 · ELENCO: pan (o pico) -->
   <section id="elenco" data-sc-act="pan" data-sc-span="3.2" data-sc-drift="#07080C">
     <div data-sc-stage>
-      <div class="rail" data-sc-pan="0.06">
+      <div class="rail" data-sc-pan="0">
         <div class="rail__lead sc-stack">
           <h2 class="sc-display sc-display--md">Conheça alguns de nossos atletas</h2>
           <p class="sc-body">Cada carta é um jogador representado pela AK. Toque para abrir a ficha.</p>
@@ -379,6 +383,7 @@ section[id]{scroll-margin-top:72px}
             <a class="ak-btn" href="jogadores.html"><span>Ver o elenco completo</span></a>
           </div>
         </div>
+        <div class="rail__respiro" aria-hidden="true"></div>
       </div>
     </div>
   </section>

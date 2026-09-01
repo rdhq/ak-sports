@@ -199,6 +199,10 @@ main{width:min(1080px,92vw);margin-inline:auto;padding:7.5rem 0 4rem}
 .foto-atual figcaption{padding:.7rem 1rem;font-size:.75rem;color:var(--ak-texto-suave);background:#0A0B11}
 @media (max-width:820px){.perfil{grid-template-columns:1fr}.perfil .arte{max-width:420px;margin-inline:auto}}
 .escudo{height:22px;width:auto;display:inline-block;vertical-align:-4px;margin-right:.45rem}
+.ak-ficha{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+.ak-ficha dd{overflow-wrap:anywhere}
+.ak-ficha .larga{grid-column:span 2}
+@media (max-width:420px){.ak-ficha{grid-template-columns:1fr 1fr}}
 .ak-ficha dd .escudo{height:24px;vertical-align:-5px}
 .videos{margin-top:clamp(2.5rem,6vh,4rem)}
 .videos h2{font-family:var(--sc-font-display);font-size:1.4rem;color:var(--ak-branco);margin:0 0 .35rem}
@@ -229,7 +233,7 @@ ${nav(pfx)}
       </div>
       <h1>${esc(a.nome)}</h1>
       <dl class="ak-ficha">
-${linhas.map(([k,v,cr]) => `        <div><dt>${k}</dt><dd>${cr?`<img class="escudo" src="${pfx}assets/img/${cr}" alt="" aria-hidden="true">`:''}${esc(v)}</dd></div>`).join('\n')}
+${linhas.map(([k,v,cr]) => `        <div${cr || String(v).length > 12 ? ' class="larga"' : ''}><dt>${k}</dt><dd>${cr?`<img class="escudo" src="${pfx}assets/img/${cr}" alt="" aria-hidden="true">`:''}${esc(v)}</dd></div>`).join('\n')}
       </dl>
       ${a.exClube ? `<p class="historico">Passagem anterior: ${a.escudoEx?`<img class="escudo" src="${pfx}assets/img/${a.escudoEx}" alt="" aria-hidden="true">`:''}<b>${esc(a.exClube)}</b>.</p>` : ''}
       <div class="acoes">
