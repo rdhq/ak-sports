@@ -29,7 +29,6 @@ const ATLETAS = [
   { slug:'joao-victor',     nome:'João Victor',     posicao:'Goleiro',          clube:'Caldense',            carta:'arte-joao-victor.jpeg' },
   { slug:'jackson',         nome:'Jackson',         posicao:'Atacante',         clube:'Goianésia',           carta:'arte-jackson.jpeg' },
   { slug:'lucas-moraes',    nome:'Lucas Moraes',    posicao:'Lateral-esquerdo', clube:'Mirassol',            categoria:'Sub-17', carta:'arte-lucas-moraes.jpeg' },
-  { slug:'joao-alexandre',  nome:'João Alexandre',  posicao:'Meio-campo',       clube:'Cruzeiro',            categoria:'Sub-11', carta:'arte-joao-alexandre.jpeg' },
   { slug:'heytor',          nome:'Heytor',          posicao:'Meio-campo',       clube:'Atlético Goianiense', categoria:'Sub-12', carta:'arte-heytor.jpeg' },
 ];
 
