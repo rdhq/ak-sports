@@ -5,27 +5,98 @@
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     }
   ],
   "redirects": [
-    { "source": "/jogadores-2", "destination": "/jogadores", "permanent": true },
-    { "source": "/category/:cat", "destination": "/jogadores", "permanent": true },
-    { "source": "/justing-cano", "destination": "/atletas/justin-cano", "permanent": true },
-    { "source": "/bruno-marcelo", "destination": "/atletas/bruno-marcello", "permanent": true },
-    { "source": "/airon-santos", "destination": "/atletas/airon-santos", "permanent": true },
-    { "source": "/alison-rodrigo", "destination": "/atletas/alison-rodrigo", "permanent": true },
-    { "source": "/caio-vandalete", "destination": "/atletas/caio-vandalete", "permanent": true },
-    { "source": "/cleyton", "destination": "/atletas/cleyton", "permanent": true },
-    { "source": "/fernando-fonseca", "destination": "/atletas/fernando-fonseca", "permanent": true },
-    { "source": "/janderson-jr", "destination": "/atletas/janderson-jr", "permanent": true },
-    { "source": "/joao-chutti", "destination": "/atletas/joao-chutti", "permanent": true },
-    { "source": "/joao-pedro", "destination": "/atletas/joao-pedro", "permanent": true },
-    { "source": "/miguel-campos", "destination": "/atletas/miguel-campos", "permanent": true },
-    { "source": "/natanael-jr", "destination": "/atletas/natanael-jr", "permanent": true },
-    { "source": "/pablo-santos", "destination": "/atletas/pablo-santos", "permanent": true },
-    { "source": "/paulinho", "destination": "/atletas/paulinho", "permanent": true },
-    { "source": "/vitor-jovino", "destination": "/atletas/vitor-jovino", "permanent": true }
+    {
+      "source": "/jogadores-2",
+      "destination": "/jogadores",
+      "permanent": true
+    },
+    {
+      "source": "/category/:cat",
+      "destination": "/jogadores",
+      "permanent": true
+    },
+    {
+      "source": "/justing-cano",
+      "destination": "/atletas/justin-cano",
+      "permanent": true
+    },
+    {
+      "source": "/bruno-marcelo",
+      "destination": "/atletas/bruno-marcello",
+      "permanent": true
+    },
+    {
+      "source": "/airon-santos",
+      "destination": "/atletas/airon-santos",
+      "permanent": true
+    },
+    {
+      "source": "/alison-rodrigo",
+      "destination": "/atletas/alison-rodrigo",
+      "permanent": true
+    },
+    {
+      "source": "/caio-vandalete",
+      "destination": "/atletas/caio-vandalete",
+      "permanent": true
+    },
+    {
+      "source": "/cleyton",
+      "destination": "/atletas/cleyton",
+      "permanent": true
+    },
+    {
+      "source": "/fernando-fonseca",
+      "destination": "/atletas/fernando-fonseca",
+      "permanent": true
+    },
+    {
+      "source": "/janderson-jr",
+      "destination": "/atletas/janderson-jr",
+      "permanent": true
+    },
+    {
+      "source": "/joao-chutti",
+      "destination": "/jogadores",
+      "permanent": true
+    },
+    {
+      "source": "/joao-pedro",
+      "destination": "/atletas/joao-pedro",
+      "permanent": true
+    },
+    {
+      "source": "/miguel-campos",
+      "destination": "/atletas/miguel-campos",
+      "permanent": true
+    },
+    {
+      "source": "/natanael-jr",
+      "destination": "/jogadores",
+      "permanent": true
+    },
+    {
+      "source": "/pablo-santos",
+      "destination": "/jogadores",
+      "permanent": true
+    },
+    {
+      "source": "/paulinho",
+      "destination": "/atletas/paulinho",
+      "permanent": true
+    },
+    {
+      "source": "/vitor-jovino",
+      "destination": "/atletas/vitor-jovino",
+      "permanent": true
+    }
   ]
 }

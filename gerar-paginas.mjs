@@ -6,12 +6,9 @@ const WHATS = 'https://wa.me/5512981878865';
 
 // carta = arte dourada 410x730 · foto = foto enviada pelo Diego (ago/2026)
 const ATLETAS = [
-  { slug:'pablo-santos',    nome:'Pablo Santos',    posicao:'Volante',          altura:'1,83 m', ano:'2006', clube:'São Gabriel EC',        escudo:'sao-gabriel.png',   carta:'1.jpg' },
   { slug:'paulinho',        nome:'Paulinho',        posicao:'Meia-atacante',    altura:'1,82 m', ano:'2008', clube:'Red Bull Bragantino',   exClube:'América-MG',       escudo:'bragantino.svg', carta:'2.jpg' },
   { slug:'vitor-jovino',    nome:'Vitor Jovino',    posicao:'Atacante',         altura:'1,83 m', ano:'2008', clube:'Boston City FC',        exClube:'Grêmio Prudente',  carta:'arte-vitor-jovino.jpeg' },
-  { slug:'natanael-jr',     nome:'Natanael Jr',     posicao:'Lateral-direito',  altura:'1,67 m', ano:'2008', clube:'Atlético Guaratinguetá', escudo:'guaratingueta.png', carta:'4.jpg' },
   { slug:'janderson-jr',    nome:'Janderson Jr',    posicao:'Atacante',         altura:'1,55 m', ano:'2013', categoria:'Base',              carta:'5.jpg' },
-  { slug:'joao-chutti',     nome:'João Chutti',     posicao:'Zagueiro',         altura:'1,87 m', ano:'2007', clube:'Atlético Guaratinguetá', escudo:'guaratingueta.png', carta:'6.jpg' },
   { slug:'joao-pedro',      nome:'João Pedro',      posicao:'Atacante',         altura:'1,83 m', ano:'2008', clube:'Barra FC',              exClube:'Corinthians',      carta:'7.jpg' },
   { slug:'miguel-campos',   nome:'Miguel Campos',   posicao:'Zagueiro',         altura:'1,88 m', ano:'1996', carta:'8.jpg',
     perfil:'https://www.transfermarkt.com/miguel-campos/profil/spieler/335744', perfilNome:'Transfermarkt', perfilLogo:'transfermarkt.png' },
